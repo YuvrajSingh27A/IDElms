@@ -1,0 +1,105 @@
+/* *{
+  padding: 0;
+  margin: 0;
+} */
+
+.bigContainer{
+  width: 100%;
+  overflow: hidden;
+} 
+
+.profilePage {
+  width: 100%;
+  padding: 20px;
+  background-color: #000;
+  color: #fff;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profileHeader img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.profileHeader h1 {
+  font-size: 24px;
+}
+
+.profileInfo {
+  margin-bottom: 20px;
+}
+
+.profileInfo div {
+  margin-bottom: 10px;
+}
+
+.profileInfo label {
+  font-weight: bold;
+  color: #555;
+}
+
+.profileInfo input[type="text"],
+.profileInfo textarea {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.activityContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(485px, 1fr)); 
+  grid-gap: 20px; /* Gap between grid items */
+}
+
+
+.activityFeed {
+  flex-basis: calc(50% - 10px); /* Adjust as needed, accounting for margin */
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: auto;
+}
+
+
+.activityFeed h2 {
+  margin-bottom: 10px;
+}
+
+.activityFeed ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.activityFeed li {
+  margin-bottom: 5px;
+}
+
+.edtBtn {
+  background-color: #f97718;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 16px;
+}
+.edtBtn:hover {
+  background-color: #1a073d;
+}

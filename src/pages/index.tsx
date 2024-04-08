@@ -7,13 +7,13 @@ import Link from "next/link";
 import Topbar from "@/components/Topbar/Topbar";
 
 const Home: NextPage = () => {
-  const welcomeText = "Namaste...";
+  const welcomeText = "Unlock your potential with us";
   const [letters, setLetters] = useState<{ letter: string; delay: number }[]>([]);
 
   useEffect(() => {
     const letterArray = Array.from(welcomeText).map((char, index) => ({
       letter: char,
-      delay: index * 0.1
+      delay: index * 0.05
     }));
     setLetters(letterArray);
   }, []);
@@ -22,9 +22,9 @@ const Home: NextPage = () => {
 
   // Updated to include new functionalities
   const features = [
-    { id: 'Categories', label: 'Student', icon: <HiUser size={44} className="text-orange-500" /> },
-    { id: 'Profile', label: 'Learner', icon: <HiUserGroup size={44} className="text-orange-500" /> },
-    { id: 'assessment', label: 'Assessment', icon: <HiClipboardCheck size={44} className="text-orange-500" /> },
+    { id: '', label: 'Student', icon: <HiUser size={44} className="text-orange-500" /> },
+    { id: 'Learner', label: 'Learner', icon: <HiUserGroup size={44} className="text-orange-500" /> },
+    { id: 'Categories', label: 'Assessment', icon: <HiClipboardCheck size={44} className="text-orange-500" /> },
     { id: 'placement', label: 'Placement Service', icon: <HiBriefcase size={44} className="text-orange-500" /> },
     { id: 'assignment', label: 'Assignment', icon: <HiDocumentReport size={44} className="text-orange-500" /> }, // Example icon
     { id: 'community', label: 'Community', icon: <HiChatAlt2 size={44} className="text-orange-500" /> }, // Example icon
@@ -46,7 +46,7 @@ const Home: NextPage = () => {
                 animation: `appear 0.5s forwards ${item.delay}s`,
                 display: 'inline-block'
               }}>
-                {item.letter}
+                {item.letter === ' ' ? <>&nbsp;</> : item.letter}
               </span>
             ))}
           </h1>

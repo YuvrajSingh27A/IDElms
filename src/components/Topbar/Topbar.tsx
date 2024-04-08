@@ -54,8 +54,8 @@ const Topbar: React.FC<TopbarProps> = ({ problemPage }) => {
           !problemPage ? "max-w-[1200px] mx-auto" : ""
         }`}
       >
-        <Link href="/" className="h-[22px] flex-1">
-          <Image src="/logo.png" alt="Logo" height={100} width={100} />
+        <Link href="/" className="h-[22px] flex-1 ">
+          <Image src="/logo.png" alt="Logo" height={100} width={100}  />
         </Link>
 
         {problemPage && (

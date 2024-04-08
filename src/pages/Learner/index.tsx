@@ -5,13 +5,13 @@ import Topbar from "@/components/Topbar/Topbar";
 const topics = [
   { id: 1, title: 'Python', description: 'Python: High-level, versatile programming language. Widely used for web development, data science. Simple syntax, extensive libraries. Ideal for beginners.' },
   { id: 2, title: 'Java', description: 'Java: Versatile, object-oriented programming language. Used for web and mobile app development, big data processing. Strong community support.' },
-  { id: 3, title: 'Dsa', description: 'Data Structures and Algorithms (DSA): Fundamental concepts for organizing and processing data efficiently in computer science and programming.' },
-  { id: 4, title: 'Dsa', description: 'Description of Topic 4' },
-  { id: 5, title: 'Dsa', description: 'Description of Topic 5' },
-  { id: 6, title: 'Dsa', description: 'Description of Topic 6' },
-  { id: 7, title: 'Dsa', description: 'Description of Topic 7' },
-  { id: 8, title: 'Dsa', description: 'Description of Topic 8' },
-  { id: 9, title: 'Dsa', description: 'Description of Topic 9' }
+  { id: 3, title: 'Javascript', description: 'JavaScript: a dynamic scripting language, adds interactivity to web pages, facilitating actions like form validation, animations, and user interface enhancements.' },
+  { id: 4, title: 'HTML', description: 'HTML: The backbone of web design, using tags to structure content. Essential for creating interactive and accessible websites.' },
+  { id: 5, title: 'CSS', description: 'CSS: (Cascading Style Sheets) styles HTML elements, dictating their appearance and layout on web pages, ensuring a visually appealing and consistent user experience across devices.' },
+  { id: 6, title: 'C', description: 'C language, renowned for its efficiency and versatility, is a powerful programming language commonly used for system programming, software development, and embedded systems, renowned for its efficiency and versatility.' },
+  { id: 7, title: 'C++', description: 'C++, an extension of the C programming language, offers object-oriented programming features alongside efficiency, making it a popular choice for developing high-performance software, systems, and games, renowned for its versatility and performance.' },
+  { id: 8, title: 'MERN', description: 'MERN stack: MERN stack is a popular JavaScript-based technology stack for building full-stack web applications, consisting of MongoDB, Express.js, React, and Node.js. It enables developers to create efficient and modern web applications with seamless data flow and dynamic user interfaces.' },
+  { id: 9, title: 'MEAN', description: 'The MEAN stack combines MongoDB, Express.js, AngularJS, and Node.js to facilitate full-stack web development. With MongoDB as the database, Express.js for the server-side framework, AngularJS for front-end development, and Node.js as the JavaScript runtime, developers can create highly responsive and scalable web applications.  ' }
   // Add more topics as needed
 ];
 

@@ -5,6 +5,7 @@ const NavigationButton = ({ destination }) => {
 
   const handleClick = () => {
     router.push(destination);
+    console.log("clicked");
   };
 
   return (

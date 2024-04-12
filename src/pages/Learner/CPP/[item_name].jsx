@@ -5,7 +5,7 @@ import Body from '../../../components/TextContent/Body/Body';
 
 
 const ItemPage = () => {
-    const topics =["Java Home", "Java Intro", "Java Get Started", "Java Syntax", "Java Output", "Java Comments", "Java Variables", "Java Data Types", "Java Type Casting", "Java Operators", "Java Strings", "Java Math", "Java Booleans", "Java If..Else", "Java Switch", "Java While Loop", "Java For Loop", "Java Break/Continue", "Java Arrays"]
+  const topics =[" Home", " Intro", " Get Started", " Syntax", "Output", "Comments", " Variables", "Data Types", "Constants", " Operators", "Strings", " Math", "Booleans"," Conditions", " If..Else", " Switch", " While Loop", " For Loop", " Break/Continue", " Arrays", " User Input", " Pointers", " Functions", " Function Parameters", " Function Declaration"," Function Overloading", " Function Overriding", " Recursion", " OOP"," Classes/Objects", " Class Methods", " Constructors"," Access Specifiers"," Encapsulation"," Inheritance"," Polymorphism"," Files"," Exceptions"]
   const router = useRouter();
   const { item_name} = router.query;
     console.log(item_name, "this is item");
@@ -15,7 +15,7 @@ const ItemPage = () => {
        <div className="flex">
                 <div className="flex-initial w-1/8">
                        
-                         <Sidebar items={topics} language={"Java"}/>
+                         <Sidebar items={topics} language={"C++"}/>
                 </div>
                 <div className="fixed top-0 left-60 flex-col  ">
                     <div className="flex-initial w-1/8">

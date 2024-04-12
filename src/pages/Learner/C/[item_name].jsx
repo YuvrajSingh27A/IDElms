@@ -5,17 +5,17 @@ import Body from '../../../components/TextContent/Body/Body';
 
 
 const ItemPage = () => {
-    const topics =["Java Home", "Java Intro", "Java Get Started", "Java Syntax", "Java Output", "Java Comments", "Java Variables", "Java Data Types", "Java Type Casting", "Java Operators", "Java Strings", "Java Math", "Java Booleans", "Java If..Else", "Java Switch", "Java While Loop", "Java For Loop", "Java Break/Continue", "Java Arrays"]
+    const topics =["C Home", "C Intro", "C Get Started", "C Syntax", "C Output", "C Comments", "C Variables", "C Data Types", "C Constants", "C Operators", "C Strings", "C Math", "C Booleans", "C If..Else", "C Switch", "C While Loop", "C For Loop", "C Break/Continue", "C Arrays", "C User Input", "C Memory Address", "C Pointers", "C Functions", "C Function Parameters", "C Function Declaration", "C Recursion"]
   const router = useRouter();
   const { item_name} = router.query;
     console.log(item_name, "this is item");
-    const item = item_name.replace(/_/g, '-').replace(/\+/g, '-')
+    const item = item_name? item_name.replace(/_/g, '-') : null;
   return (
     <div>
        <div className="flex">
                 <div className="flex-initial w-1/8">
                        
-                         <Sidebar items={topics} language={"Java"}/>
+                         <Sidebar items={topics} language={"C"}/>
                 </div>
                 <div className="fixed top-0 left-60 flex-col  ">
                     <div className="flex-initial w-1/8">

@@ -29,10 +29,11 @@ const Home: NextPage = () => {
     { id: 'assignment', label: 'Assignment', icon: <HiDocumentReport size={44} className="text-orange-500" /> }, // Example icon
     { id: 'community', label: 'Community', icon: <HiChatAlt2 size={44} className="text-orange-500" /> }, // Example icon
     { id: 'cv-builder', label: 'CV Builder', icon: <HiOutlineDocumentDuplicate size={44} className="text-orange-500" /> }, // Example icon
+    { id: 'admission', label: 'Admission Portal', icon: <HiLockClosed size={44} className="text-orange-500" /> }, // Admission Portal with lock icon
   ];
 
   // Function to determine if a feature is coming soon
-  const isComingSoon = (id: string) => [ 'placement', 'assignment', 'community', 'cv-builder'].includes(id);
+  const isComingSoon = (id: string) => ['placement', 'assignment', 'community', 'cv-builder', 'admission'].includes(id);
 
   return (
     <>

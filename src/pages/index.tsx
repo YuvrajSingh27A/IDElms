@@ -10,7 +10,7 @@ const Home: NextPage= () => {
   return (
     <>
       <Topbar />
-      <div className="flex bg-black h-screen justify-center items-center">
+      <div className="flex h-screen justify-center items-center" style={{ backgroundImage: `url('/mainPageBg.jpg')`}}>
         {/* Left side */}
         <div className="w-1/3 p-4 flex flex-col justify-center items-center"> {/* Reduced width to 1/3 */}
           {/* Student Card */}

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Sidebar from "../../../components/TextContent/Sidebar/Sidebar";
 import Header from "../../../components/TextContent/Header/Header"
 import Body from "../../../components/TextContent/Body/Body"
+import Topbar from "../../../components/Topbar/Topbar";
 import { GiHamburgerMenu, GiCrossMark } from "react-icons/gi";
 import { ImCross } from "react-icons/im";
 
@@ -16,7 +17,7 @@ const JavaPage = () => {
     return (
         
         <div className="flex">
-           
+            <div className="fixed w-screen"><Topbar/></div>
             <div className={`flex-initial w-1/8 ${!sidebarOpen && 'hidden'} sm:block`}>
                 <Sidebar items={topics} language={"Java"}/>
             </div>
@@ -42,7 +43,7 @@ const JavaPage = () => {
                 <div className="flex-initial w-7/8"> 
                     <h1>Java Tutorial</h1>
                     <b> Learn Java </b>
-                    vansh chuttad
+                
                 </div>
             </div>
         </div>

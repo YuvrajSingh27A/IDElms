@@ -8,6 +8,7 @@ const CPage = () => {
     return (
         
             <div className="flex">
+                 <div className="fixed w-screen"><Topbar/></div>
                 <div className="flex-initial w-1/8">
                        
                          <Sidebar items={topics} language={"C"}/>

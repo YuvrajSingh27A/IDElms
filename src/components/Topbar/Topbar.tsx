@@ -1,6 +1,7 @@
 import { auth } from "@/firebase/firebase";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/router";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Logout from "../Buttons/Logout";
 import { useSetRecoilState } from "recoil";
@@ -9,20 +10,18 @@ import Image from "next/image";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { BsList } from "react-icons/bs";
 import Timer from "../Timer/Timer";
-import { useRouter } from "next/router";
 import { problems } from "@/utils/problems";
 import { Problem } from "@/utils/types/problem";
-  
+
 type TopbarProps = {
   problemPage?: boolean;
 };
-
-
 
 const Topbar: React.FC<TopbarProps> = ({ problemPage }) => {
   const [user] = useAuthState(auth);
   const setAuthModalState = useSetRecoilState(authModalState);
   const router = useRouter();
+  const [showMenu, setShowMenu] = useState(false);
 
   const handleProblemChange = (isForward: boolean) => {
     const { order } = problems[router.query.pid as string] as Problem;
@@ -48,45 +47,50 @@ const Topbar: React.FC<TopbarProps> = ({ problemPage }) => {
   };
 
   return (
-    <nav className="relative flex h-[50px] w-full shrink-0 items-center px-5 bg-black text-dark-gray-7">
-      <div
-        className={`flex w-full items-center justify-between ${
-          !problemPage ? "max-w-[1200px] mx-auto" : ""
-        }`}
-      >
-        <Link href="/" className="h-[22px] flex-1 ">
-          <Image src="/logo.png" alt="Logo" height={100} width={100}  />
-        </Link>
-
-        {problemPage && (
-          <div className="flex items-center gap-4 flex-1 justify-center">
-            <div
-              className="flex items-center justify-center rounded bg-dark-fill-3 hover:bg-dark-fill-2 h-8 w-8 cursor-pointer"
-              onClick={() => handleProblemChange(false)}
+    <nav className="relative flex h-[50px] items-center px-2 sm:px-1 bg-black text-dark-gray-7">
+      <div className="flex items-center justify-between w-full max-w-screen-xl mx-auto">
+        <div className="flex items-center">
+          <Link href="/">
+            <Image src="/logo.png" alt="Logo" width={120} height={20} />
+          </Link>
+          <div className="block sm:hidden">
+            <button
+              onClick={() => setShowMenu(!showMenu)}
+              className="text-white focus:outline-none"
             >
-              <FaChevronLeft />
-            </div>
-            <Link
-              href="/"
-              className="flex items-center gap-2 font-medium max-w-[170px] text-dark-gray-8 cursor-pointer"
-            >
-              <div>
-                <BsList />
-              </div>
-              <p>Problem List</p>
-            </Link>
-            <div
-              className="flex items-center justify-center rounded bg-dark-fill-3 hover:bg-dark-fill-2 h-8 w-8 cursor-pointer"
-              onClick={() => handleProblemChange(true)}
-            >
-              <FaChevronRight />
-            </div>
+              <BsList size={24} />
+            </button>
           </div>
-        )}
+          
+          {problemPage && (
+            <div className={`flex items-center gap-4 justify-center ${showMenu ? 'block' : 'hidden'} sm:flex flex-col sm:flex-row`}>
+              <div
+                className="flex items-center justify-center rounded bg-dark-fill-3 hover:bg-dark-fill-2 h-8 w-8 cursor-pointer"
+                onClick={() => handleProblemChange(false)}
+              >
+                <FaChevronLeft />
+              </div>
+              <Link
+                href="/"
+                className="flex items-center gap-2 font-medium max-w-[170px] text-dark-gray-8 cursor-pointer"
+              >
+                <div>
+                  <BsList />
+                </div>
+                <p>Problem List</p>
+              </Link>
+              <div
+                className="flex items-center justify-center rounded bg-dark-fill-3 hover:bg-dark-fill-2 h-8 w-8 cursor-pointer"
+                onClick={() => handleProblemChange(true)}
+              >
+                <FaChevronRight />
+              </div>
+            </div>
+          )}
+        </div>
 
-        <div className="flex items-center space-x-4 flex-1 justify-end">
+        <div className={`flex items-center space-x-4 ${showMenu ? 'block' : 'hidden'} sm:flex`}>
           <div>
-			
             <Link
               href="/Categories"
               className="bg-dark-fill-3 py-1.5 px-3 cursor-pointer rounded text-brand-orange hover:bg-dark-fill-2"
@@ -94,21 +98,24 @@ const Topbar: React.FC<TopbarProps> = ({ problemPage }) => {
               Questions
             </Link>
           </div>
+          <div onClick={() => router.push("/about")} className="cursor-pointer text-brand-orange hover:text-white">
+            About
+          </div>
+          <div onClick={() => router.push("/contact")} className="cursor-pointer text-brand-orange hover:text-white">
+            Contact
+          </div>
           {!user && (
-            <Link
-              href="/auth"
-              onClick={() =>
+            <div onClick={() =>
                 setAuthModalState((prev) => ({
                   ...prev,
                   isOpen: true,
                   type: "login",
                 }))
-              }
-            >
-              <button className="bg-dark-fill-3 py-1 px-2 cursor-pointer rounded ">
+              } className="cursor-pointer">
+              <div className="bg-dark-fill-3 py-1 px-2 rounded">
                 Sign In
-              </button>
-            </Link>
+              </div>
+            </div>
           )}
           {user && problemPage && <Timer />}
           {user && (

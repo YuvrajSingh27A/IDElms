@@ -1,81 +1,40 @@
-import React, { useEffect, useState } from 'react';
-import NavigationButton from '../components/Buttons/NavigationButton'; // Adjust the import path as needed
-import { HiLockClosed } from 'react-icons/hi'; // Import lock icon
-import type { NextPage } from 'next';
-import { HiUser, HiUserGroup, HiClipboardCheck, HiBriefcase, HiDocumentReport, HiChatAlt2, HiOutlineDocumentDuplicate } from 'react-icons/hi'; // Import additional icons
-import Link from "next/link";
-import Topbar from "@/components/Topbar/Topbar";
+import React from 'react';
+import Lottie from "lottie-react";
+import mainGif from "../../public/mainPageGif.json";
+import Topbar from '@/components/Topbar/Topbar';
+import { HiOutlineArrowNarrowRight } from 'react-icons/hi';
+import  Link  from 'next/link';
+import { NextPage } from 'next';
 
-const Home: NextPage = () => {
-  const welcomeText = "Unlock your potential with us";
-  const [letters, setLetters] = useState<{ letter: string; delay: number }[]>([]);
-
-  useEffect(() => {
-    const letterArray = Array.from(welcomeText).map((char, index) => ({
-      letter: char,
-      delay: index * 0.05
-    }));
-    setLetters(letterArray);
-  }, []);
-
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
-
-  // Updated to include new functionalities
-  const features = [
-    { id: '', label: 'Student', icon: <HiUser size={44} className="text-orange-500" /> },
-    { id: 'Learner', label: 'Learner', icon: <HiUserGroup size={44} className="text-orange-500" /> },
-    { id: 'Categories', label: 'Assessment', icon: <HiClipboardCheck size={44} className="text-orange-500" /> },
-    { id: 'placement', label: 'Placement Service', icon: <HiBriefcase size={44} className="text-orange-500" /> },
-    { id: 'assignment', label: 'Assignment', icon: <HiDocumentReport size={44} className="text-orange-500" /> }, // Example icon
-    { id: 'community', label: 'Community', icon: <HiChatAlt2 size={44} className="text-orange-500" /> }, // Example icon
-    { id: 'cv-builder', label: 'CV Builder', icon: <HiOutlineDocumentDuplicate size={44} className="text-orange-500" /> }, // Example icon
-    { id: 'admission', label: 'Admission Portal', icon: <HiLockClosed size={44} className="text-orange-500" /> }, // Admission Portal with lock icon
-  ];
-
-  // Function to determine if a feature is coming soon
-  const isComingSoon = (id: string) => ['placement', 'assignment', 'community', 'cv-builder', 'admission'].includes(id);
-
+const Home: NextPage= () => {
   return (
     <>
       <Topbar />
-      <div className="landingPage bg-cover bg-center min-h-screen" style={{ backgroundImage: `url('./landingPageBg.jpg')` }}>
-        <div className="flex flex-col items-center justify-center min-h-screen text-white px-4">
-          <h1 className='text-3xl md:text-5xl font-bold text-center mt-10 mb-10 md:mb-20'>
-            {letters.map((item, index) => (
-              <span key={index} style={{
-                opacity: 0,
-                animation: `appear 0.5s forwards ${item.delay}s`,
-                display: 'inline-block'
-              }}>
-                {item.letter === ' ' ? <>&nbsp;</> : item.letter}
-              </span>
-            ))}
-          </h1>
-          <div className="flex flex-wrap justify-center gap-4 md:gap-20 mb-10">
-            {features.map((feature, index) => (
-              <div key={index}
-                className={`border border-gray-200 shadow-xl rounded-xl bg-gradient-to-br from-transparent to-transparent w-full sm:w-[250px] h-[200px] sm:h-[250px] transition-all duration-300 ease-in-out flex flex-col items-center justify-center bg-clip-padding backdrop-filter backdrop-blur-lg bg-white bg-opacity-10 ${isComingSoon(feature.id) ? 'blur' : ''}`}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
-                style={{
-                  transform: hoveredIndex === index ? 'perspective(1500px) rotateY(15deg) rotateX(15deg)' : 'none',
-                  boxShadow: hoveredIndex === index ? '0 0 20px 5px orange' : '0 4px 6px rgba(0, 0, 0, 0.1)',
-                  filter: hoveredIndex !== null && hoveredIndex !== index ? 'blur(4px)' : 'none'
-                }}
-              >
-                {isComingSoon(feature.id) && (
-                  <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center bg-black bg-opacity-50 text-white">
-                    <HiLockClosed size={32} />
-                    <div>Coming Soon</div>
-                  </div>
-                )}
-                <div className="text-3xl md:text-4xl">
-                  {feature.icon}
-                </div>
-                <div className="mt-2 text-sm md:text-lg">{feature.label}</div>
-                <NavigationButton destination={`/${feature.id}`} />
-              </div>
-            ))}
+      <div className="flex bg-black h-screen justify-center items-center">
+        {/* Left side */}
+        <div className="w-1/3 p-4 flex flex-col justify-center items-center"> {/* Reduced width to 1/3 */}
+          {/* Student Card */}
+          <div className="bg-white rounded-lg shadow-md p-4 mb-4  ml-56 relative aspect-w-1 aspect-h-1 transform rotate-0 transition-transform duration-500 hover:rotate-360 hover:scale-105 backdrop-filter backdrop-blur-lg bg-opacity-20 w-11/12 hover:shadow-orange">
+            <h2 className="text-lg font-semibold mb-2 text-white">Student</h2>
+            <p className="text-sm text-white mb-4">Short description about the student card goes here.</p>
+            <Link href="/StudentHome"><button className="bg-orange-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-lg transition-colors duration-300">
+              LOGIN <HiOutlineArrowNarrowRight className="inline-block ml-1" />
+            </button></Link>
+          </div>
+          {/* Trainer Card */}
+          <div className="bg-white rounded-lg ml-56 shadow-md p-4 relative aspect-w-1 aspect-h-1 transform rotate-0 transition-transform duration-500 hover:rotate-360 hover:scale-105 backdrop-filter backdrop-blur-lg bg-opacity-20 w-11/12 hover:shadow-orange">
+            <h2 className="text-lg font-semibold mb-2 text-white">Trainer</h2>
+            <p className="text-sm text-white mb-4">Short description about the trainer card goes here.</p>
+            <button className="bg-orange-500 hover:bg-blue-500 text-white font-semibold px-4 py-2 rounded-lg transition-colors duration-300">
+              LOGIN <HiOutlineArrowNarrowRight className="inline-block ml-1" />
+            </button>
+          </div>
+        </div>
+        {/* Right side */}
+        <div className="w-2/3 p-4"> {/* Increased width to 2/3 */}
+          {/* Space for GIF */}
+          <div className="rounded-lg shadow-md p-4 h-full flex justify-center items-center">
+            <Lottie animationData={mainGif} />
           </div>
         </div>
       </div>

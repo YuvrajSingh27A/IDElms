@@ -42,8 +42,7 @@ const JavaPage = () => {
                 <div className="flex-initial w-7/8"> 
                     <h1>Java Tutorial</h1>
                     <b> Learn Java </b>
-                    Java is a popular programming language.
-                    Java is used to develop mobile apps, web apps, desktop apps, games and much more.
+                    vansh chuttad
                 </div>
             </div>
         </div>

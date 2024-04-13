@@ -8,7 +8,7 @@ const CPage = () => {
     return (
         <div className="flex">
             <div className="flex-initial w-1/8">
-                <Sidebar items={topics} language={"C++"}/>
+                <Sidebar items={topics} language={"CPP"}/>
             </div>
             <div className="flex-col">
                 <div className="flex-initial w-1/8">

@@ -9,13 +9,13 @@ const ItemPage = () => {
   const router = useRouter();
   const { item_name} = router.query;
     console.log(item_name, "this is item");
-    const item = item_name.replace(/_/g, '-').replace(/\+/g, '-')
+    const item = item_name ? item_name.replace(/_/g, '-').replace(/\+/g, '-') : null
   return (
     <div>
        <div className="flex">
                 <div className="flex-initial w-1/8">
                        
-                         <Sidebar items={topics} language={"C++"}/>
+                         <Sidebar items={topics} language={"CPP"}/>
                 </div>
                 <div className="fixed top-0 left-60 flex-col  ">
                     <div className="flex-initial w-1/8">

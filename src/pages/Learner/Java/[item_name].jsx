@@ -9,7 +9,7 @@ const ItemPage = () => {
   const router = useRouter();
   const { item_name} = router.query;
     console.log(item_name, "this is item");
-    const item = item_name.replace(/_/g, '-').replace(/\+/g, '-')
+    const item = item_name ? item_name.replace(/_/g, '-').replace(/\+/g, '-') : null
   return (
     <div>
        <div className="flex">

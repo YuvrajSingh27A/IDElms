@@ -4,12 +4,15 @@ import { IoClose } from "react-icons/io5";
 import Login from "./Login";
 import ResetPassword from "./ResetPassword";
 import Signup from "./Signup";
+import SignOut from "./SignOut"
 import { useRecoilValue, useSetRecoilState } from "recoil";
+import { useRouter } from "next/router";
 
 
 type AuthModalProps = {};
 
 const AuthModal: React.FC<AuthModalProps> = () => {
+	
 	const authModal = useRecoilValue(authModalState);
 	const closeModal = useCloseModal();
 	return (
@@ -30,7 +33,7 @@ const AuthModal: React.FC<AuthModalProps> = () => {
 								<IoClose className='h-5 w-5' />
 							</button>
 						</div>
-						{authModal.type === "login" ? <Login /> : authModal.type === "register" ? <Signup /> : <ResetPassword />}
+						{authModal.type === "login" ? <Login /> : authModal.type === "register" ? <Signup /> : authModal.type === "logout" ? <SignOut/> : <ResetPassword />}
 					</div>
 				</div>
 			</div>
@@ -40,11 +43,14 @@ const AuthModal: React.FC<AuthModalProps> = () => {
 export default AuthModal;
 
 function useCloseModal() {
+	
 	const setAuthModal = useSetRecoilState(authModalState);
-
+	const router = useRouter();
 	const closeModal = () => {
 		setAuthModal((prev) => ({ ...prev, isOpen: false, type: "login" }));
+		router.push("/");
 	};
+	
 
 	useEffect(() => {
 		const handleEsc = (e: KeyboardEvent) => {

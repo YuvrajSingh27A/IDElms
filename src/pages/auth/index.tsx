@@ -22,9 +22,18 @@ const AuthPage: React.FC<AuthPageProps> = () => {
 	
 
 	useEffect(() => {
-		if (user) router.push("/");
-		if (!loading && !user) setPageLoading(false);
-	}, [user, router, loading]);
+		if (!pageLoading) return; // Exit early if page loading is already false
+	  
+		if (user && authModal.isOpen && authModal.type === "logout") {
+		  // Prevent redirection to the home page
+		  setPageLoading(false);
+		} else {
+		  // Redirect to the home page if the user is logged in
+		  if (user) router.push("/");
+		  if (!loading && !user) setPageLoading(false);
+		}
+	  }, [user, router, loading, authModal.isOpen, authModal.type, pageLoading]);
+	  
 
 	if (pageLoading) return null;
 	

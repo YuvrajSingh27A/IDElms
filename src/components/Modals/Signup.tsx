@@ -52,6 +52,7 @@ const Signup: React.FC<SignupProps> = () => {
 
             // Redirect user to a verification page
            // router.push(/verification?email=${inputs.email});
+           router.push("/");
         } catch (error: any) {
             toast.error(error.message, { position: "top-center" });
         } finally {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import TopicCard from "@/components/TopicCard/TopicCard";
 import Topbar from "@/components/Topbar/Topbar";
 
@@ -18,6 +18,10 @@ const totalQuestions = [100, 150, 120, 100, 150, 120, 100, 150, 120]; // Example
 const solvedQuestions = [75, 90, 80, 75, 90, 80, 75, 90, 80]; // Example solved questions for each topic
 
 const HomePage = () => {
+
+  const topicCards = useMemo(() => topics.map((topic, index) => (
+    <TopicCard key={topic.id} topic={topic} totalQuestions={totalQuestions[index]} solvedQuestions={solvedQuestions[index]} />
+  )), [topics, totalQuestions, solvedQuestions]);
   return (
     <>
     <Topbar/>
@@ -25,9 +29,7 @@ const HomePage = () => {
       <div className="container mx-auto px-4 py-8">
         <h1 className="text-3xl font-bold mb-4 text-white">Topics</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {topics.map((topic, index) => (
-            <TopicCard key={topic.id} topic={topic} totalQuestions={totalQuestions[index]} solvedQuestions={solvedQuestions[index]} />
-          ))}
+         {topicCards}
         </div>
       </div>
     </div>

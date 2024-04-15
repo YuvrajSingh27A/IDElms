@@ -1,22 +1,26 @@
 import React from "react";
 import Topbar from "@/components/Topbar/Topbar";
+<<<<<<< HEAD
+=======
+import Lottie from "lottie-react";
+import aboutGif from "../../../public/aboutPageGIF.json";
+>>>>>>> 9f0ba24d1733929cf41ac565e98eda0165b0fe42
 import Footer from "@/components/Footer/Footer";
 
 const AboutPage = () => {
   return (
     <div>
       <Topbar />
-      <section id="page-header" className="about-header bg-cover bg-center">
-        <div className="text-white text-center ">
-          <h2 className="text-4xl">#KnowUs</h2>
-          <p className="text-lg">Pahale Istemal Kro Phir Vishwas Karo!</p>
+     
+      <section id="about-head" className="section-p1 flex items-center text-white bg-black ">
+       
+        <div className="w-1/2">
+          <Lottie animationData={aboutGif} className="w-full h-auto max-w-md ml-20 rounded-lg shadow-lg" />
         </div>
-      </section>
-      <section id="about-head" className="section-p1 flex items-center">
-        <img src="a6.jpg" alt="about" className="w-1/2 rounded-lg shadow-lg" />
-        <div className="px-8">
-          <h2 className="text-2xl font-bold mb-4">Who We Are</h2>
-          <p className="text-lg mb-4">
+        
+        <div className="w-1/2 px-8 ">
+          <h2 className="text-2xl font-bold mb-4 " >Who We Are</h2>
+          <p className="text-md mb-4">
             Welcome to CodeStop, your premier destination for online learning,
             coding IDE, placement services, community-driven doubt solving, and
             CV building. At CodeStop, we're committed to empowering individuals
@@ -36,23 +40,24 @@ const AboutPage = () => {
             potential employers, our CV builder tool will help you create a
             professional resume that highlights your achievements and expertise.
           </p>
-          <div className="text-sm mb-4">
+          <div className="text-sm mb-4 ">
             <marquee
-              className="bg-gray-200 py-2 px-4 rounded"
+              className="bg-gray-300 py-2 px-4 rounded text-black"
               behavior="scroll"
               direction="left"
               scrollamount="5"
+              
             >
               Premier online learning, coding IDE, placement services, community-driven doubt solving, and CV building platform empowering digital skills.
             </marquee>
           </div>
         </div>
       </section>
-      <section id="about-app" className="section-p1 text-center py-16">
+      <section id="about-app" className="section-p1 text-center py-16 bg-black text-white">
         <h1 className="text-4xl mb-4">
-          DOWNLOAD OUR{" "}
+          JOIN US {" "}
           <a href="#" className="text-blue-500">
-            App
+            NOW
           </a>
         </h1>
         <div className="video w-3/4 mx-auto">
@@ -63,7 +68,7 @@ const AboutPage = () => {
       </section>
       <section
         id="feature"
-        className="section-p1 flex justify-center flex-wrap py-8"
+        className="section-p1 flex justify-center flex-wrap py-8 bg-black text-white"
       >
         <FeatureBox image="f1.png" title="Online Learing" />
         <FeatureBox image="f2.png" title="Temporal Evaluations" />
@@ -72,11 +77,11 @@ const AboutPage = () => {
         <FeatureBox image="f5.png" title="Happy Students" />
         <FeatureBox image="f6.png" title="24/7 Support" />
       </section>
-      <section id="newsletter" className="section-p1 bg-gray-100 py-16">
+      <section id="newsletter" className="section-p1 text-white py-16 bg-gray-900 ">
         <div className="newstext text-center mb-4">
           <h4 className="text-2xl font-bold mb-2">Sign Up For Newsletter</h4>
           <p>
-            Get E-mail Updates About Our Latest Shop And{" "}
+            Get E-mail Updates About Our{" "}
             <span className="font-bold">Special Offers.</span>
           </p>
         </div>
@@ -86,13 +91,18 @@ const AboutPage = () => {
             placeholder="Your e-mail address"
             className="py-2 px-4 border border-gray-400 rounded mr-2"
           />
-          <button className="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600">
+          <button className="py-2 px-4 bg-orange-500 text-white rounded hover:bg-blue-600">
             Sign Up
           </button>
         </div>
       </section>
+<<<<<<< HEAD
       <Footer/>
+=======
+      {/* <Footer/> */}
+>>>>>>> 9f0ba24d1733929cf41ac565e98eda0165b0fe42
     </div>
+   
   );
 };
 
@@ -102,7 +112,9 @@ const FeatureBox = ({ image, title }) => {
       <img src={image} alt={title} className="mx-auto" />
       <h6 className="mt-2">{title}</h6>
     </div>
+
   );
+ 
 };
 
 export default AboutPage;

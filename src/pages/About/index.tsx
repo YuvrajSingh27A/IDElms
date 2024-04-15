@@ -1,4 +1,4 @@
-import React from "react";
+mport React from "react";
 import Topbar from "@/components/Topbar/Topbar";
 import Lottie from "lottie-react";
 import aboutGif from "../../../public/aboutPageGIF.json";
@@ -9,15 +9,15 @@ const AboutPage = () => {
     <div className="bg-black">
       <Topbar />
      
-      <section id="about-head" className="section-p1 flex items-center mt-16 text-white bg-black ">
+      <section id="about-head" className="section-p1 flex items-center text-white bg-black mt-16">
        
         <div className="w-1/2">
           <Lottie animationData={aboutGif} className="w-full h-auto max-w-md ml-20 rounded-lg shadow-lg" />
         </div>
         
         <div className="w-1/2 px-8 ">
-          <h2 className="text-2xl font-bold mb-4 " >Who We Are</h2>
-          <p className="text-md mb-4">
+          <h2 className="text-2xl font-bold mb-4">Who We Are</h2>
+          <p className=" mb-4">
             Welcome to CodeStop, your premier destination for online learning,
             coding IDE, placement services, community-driven doubt solving, and
             CV building. At CodeStop, we're committed to empowering individuals
@@ -39,7 +39,11 @@ const AboutPage = () => {
           </p>
           <div className="text-sm mb-4 ">
             <marquee
-              className="bg-gray-300 py-2 px-4 rounded text-black" behavior="scroll" direction="left" scrollamount="5">
+              className="bg-gray-300 py-2 px-4 rounded text-black"
+              behavior="scroll"
+              direction="left"
+              scrollamount="5"
+            >
               Premier online learning, coding IDE, placement services, community-driven doubt solving, and CV building platform empowering digital skills.
             </marquee>
           </div>
@@ -62,7 +66,7 @@ const AboutPage = () => {
         id="feature"
         className="section-p1 flex justify-center flex-wrap py-8 bg-black text-white"
       >
-        <FeatureBox image="f1.png" title="Online Learing" />
+        <FeatureBox image="f1.png" title="Online Learning" />
         <FeatureBox image="f2.png" title="Temporal Evaluations" />
         <FeatureBox image="f3.png" title="Affordable" />
         <FeatureBox image="f4.png" title="Placement Support" />
@@ -90,7 +94,6 @@ const AboutPage = () => {
       </section>
       {/* <Footer/> */}
     </div>
-   
   );
 };
 
@@ -100,9 +103,7 @@ const FeatureBox = ({ image, title }) => {
       <img src={image} alt={title} className="mx-auto" />
       <h6 className="mt-2">{title}</h6>
     </div>
-
   );
- 
 };
 
 export default AboutPage;

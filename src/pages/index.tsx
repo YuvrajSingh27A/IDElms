@@ -10,6 +10,7 @@ import { authModalState } from '@/atoms/authModalAtom';
 import { useRouter } from 'next/router';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebase/firebase';
+import Footer from '@/components/Footer/Footer';
 
 const Home: NextPage= () => {
   const setAuthModalState = useSetRecoilState(authModalState);
@@ -55,7 +56,7 @@ const Home: NextPage= () => {
           </div>
          
        
-          {/* Trainer Card */}
+        
           <div className="bg-white rounded-lg ml-56 shadow-md p-4 relative aspect-w-1 aspect-h-1 transform rotate-0 transition-transform duration-500 hover:rotate-360 hover:scale-105 backdrop-filter backdrop-blur-lg bg-opacity-20 w-11/12 hover:shadow-orange">
             <h2 className="text-lg font-semibold mb-2 text-white">Trainer</h2>
             <p className="text-sm text-white mb-4">Short description about the trainer card goes here.</p>
@@ -64,14 +65,15 @@ const Home: NextPage= () => {
             </button>
           </div>
         </div>
-        {/* Right side */}
+       
         <div className="w-2/3 p-4"> {/* Increased width to 2/3 */}
-          {/* Space for GIF */}
+         
           <div className="rounded-lg shadow-md p-4 h-full flex justify-center items-center">
             <Lottie animationData={mainGif} />
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

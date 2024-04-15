@@ -6,10 +6,10 @@ import Footer from "@/components/Footer/Footer";
 
 const AboutPage = () => {
   return (
-    <div>
+    <div className="bg-black">
       <Topbar />
      
-      <section id="about-head" className="section-p1 flex items-center text-white bg-black ">
+      <section id="about-head" className="section-p1 flex items-center mt-16 text-white bg-black ">
        
         <div className="w-1/2">
           <Lottie animationData={aboutGif} className="w-full h-auto max-w-md ml-20 rounded-lg shadow-lg" />
@@ -39,12 +39,7 @@ const AboutPage = () => {
           </p>
           <div className="text-sm mb-4 ">
             <marquee
-              className="bg-gray-300 py-2 px-4 rounded text-black"
-              behavior="scroll"
-              direction="left"
-              scrollamount="5"
-              
-            >
+              className="bg-gray-300 py-2 px-4 rounded text-black" behavior="scroll" direction="left" scrollamount="5">
               Premier online learning, coding IDE, placement services, community-driven doubt solving, and CV building platform empowering digital skills.
             </marquee>
           </div>

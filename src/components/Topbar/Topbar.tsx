@@ -98,12 +98,15 @@ const Topbar: React.FC<TopbarProps> = ({ problemPage }) => {
               Questions
             </Link>
           </div>
-          <div onClick={() => router.push("/about")} className="cursor-pointer text-brand-orange hover:text-white">
-            About
-          </div>
-          <div onClick={() => router.push("/contact")} className="cursor-pointer text-brand-orange hover:text-white">
+         <Link href="/About"> <div  className="cursor-pointer text-brand-orange hover:text-white">
+            About 
+            </div>
+         </Link>
+          <Link href="/Contact">
+          <div className="cursor-pointer text-brand-orange hover:text-white">
             Contact
           </div>
+          </Link>
           
           {user && problemPage && <Timer />}
           {user && (

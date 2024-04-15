@@ -1,6 +1,5 @@
-import React, { useMemo } from 'react';
-import TopicCard from "@/components/TopicCard/TopicCard";
-import Topbar from "@/components/Topbar/Topbar";
+import React, { Suspense } from 'react';
+import Topbar from '@/components/Topbar/Topbar';
 
 const topics = [
   { id: 1, title: 'Python', description: 'Python: High-level, versatile programming language. Widely used for web development, data science. Simple syntax, extensive libraries. Ideal for beginners.' },
@@ -14,25 +13,27 @@ const topics = [
   { id: 9, title: 'MEAN', description: 'The MEAN stack combines MongoDB, Express.js, AngularJS, and Node.js to facilitate full-stack web development. With MongoDB as the database, Express.js for the server-side framework, AngularJS for front-end development, and Node.js as the JavaScript runtime, developers can create highly responsive and scalable web applications.  ' }
 ];
 
-const totalQuestions = [100, 150, 120, 100, 150, 120, 100, 150, 120]; // Example total questions for each topic
-const solvedQuestions = [75, 90, 80, 75, 90, 80, 75, 90, 80]; // Example solved questions for each topic
+const LazyTopicCard = React.lazy(() => import('@/components/TopicCard/TopicCard'));
 
 const HomePage = () => {
-
-  const topicCards = useMemo(() => topics.map((topic, index) => (
-    <TopicCard key={topic.id} topic={topic} totalQuestions={totalQuestions[index]} solvedQuestions={solvedQuestions[index]} />
-  )), [topics, totalQuestions, solvedQuestions]);
   return (
     <>
-    <Topbar/>
-    <div className="bg-cover bg-center min-h-screen" style={{ backgroundImage: `url('/landingPageBg.jpg')` }}>
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold mb-4 text-white">Topics</h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-         {topicCards}
+      <Topbar />
+      <div className="bg-cover bg-center min-h-screen" style={{ backgroundImage: `url('/landingPageBg.jpg')` }}>
+        <div className="container mx-auto px-4 py-8">
+          <h1 className="text-3xl font-bold mb-4 text-white">Topics</h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {topics.map((topic, index) => (
+              <Suspense key={topic.id} fallback={<div>Loading...</div>}>
+                <LazyTopicCard
+                  topic={topic}
+                
+                />
+              </Suspense>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 };

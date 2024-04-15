@@ -104,19 +104,7 @@ const Topbar: React.FC<TopbarProps> = ({ problemPage }) => {
           <div onClick={() => router.push("/contact")} className="cursor-pointer text-brand-orange hover:text-white">
             Contact
           </div>
-          {!user && (
-            <div onClick={() =>
-                setAuthModalState((prev) => ({
-                  ...prev,
-                  isOpen: true,
-                  type: "login",
-                }))
-              } className="cursor-pointer">
-              <div className="bg-dark-fill-3 py-1 px-2 rounded">
-                Sign In
-              </div>
-            </div>
-          )}
+          
           {user && problemPage && <Timer />}
           {user && (
             <div className="cursor-pointer group relative">

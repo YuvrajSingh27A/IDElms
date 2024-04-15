@@ -1,5 +1,6 @@
 import React from "react";
 import Topbar from "@/components/Topbar/Topbar";
+import Footer from "@/components/Footer/Footer";
 
 const AboutPage = () => {
   return (
@@ -90,6 +91,7 @@ const AboutPage = () => {
           </button>
         </div>
       </section>
+      <Footer/>
     </div>
   );
 };

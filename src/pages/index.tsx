@@ -38,7 +38,7 @@ const Home: NextPage= () => {
         {/* Left side */}
         <div className="w-1/3 p-4 flex flex-col justify-center items-center"> {/* Reduced width to 1/3 */}
           {/* Student Card */}
-          <div className="bg-white rounded-lg shadow-md p-4 mb-4  ml-56 relative aspect-w-1 aspect-h-1 transform rotate-0 transition-transform duration-500 hover:rotate-360 hover:scale-105 backdrop-filter backdrop-blur-lg bg-opacity-20 w-11/12 hover:shadow-orange">
+          <div className="bg-white rounded-lg shadow-md p-4 mb-4  ml-48 relative aspect-w-1 aspect-h-1 transform rotate-0 transition-transform duration-500 hover:rotate-360 hover:scale-105 backdrop-filter backdrop-blur-lg bg-opacity-20 w-11/12 hover:shadow-orange">
             <h2 className="text-lg font-semibold mb-2 text-white">Student</h2>
             <p className="text-sm text-white mb-4">Short description about the student card goes here.</p>
             <Link 
@@ -56,7 +56,7 @@ const Home: NextPage= () => {
           </div>
          
        
-        
+          {/* Trainer Card */}
           <div className="bg-white rounded-lg ml-56 shadow-md p-4 relative aspect-w-1 aspect-h-1 transform rotate-0 transition-transform duration-500 hover:rotate-360 hover:scale-105 backdrop-filter backdrop-blur-lg bg-opacity-20 w-11/12 hover:shadow-orange">
             <h2 className="text-lg font-semibold mb-2 text-white">Trainer</h2>
             <p className="text-sm text-white mb-4">Short description about the trainer card goes here.</p>

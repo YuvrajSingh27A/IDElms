@@ -3,10 +3,9 @@ import { useRouter } from "next/router";
 import React from "react";
 import { useSignOut } from "react-firebase-hooks/auth";
 import { FiLogOut } from "react-icons/fi";
-
 import {  useRecoilValue, useSetRecoilState } from "recoil";
 import { authModalState } from "@/atoms/authModalAtom";
-import Link from "next/link";
+
 
 const Logout: React.FC = () => {
 	const router = useRouter();

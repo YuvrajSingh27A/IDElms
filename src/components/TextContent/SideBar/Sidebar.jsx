@@ -14,8 +14,8 @@ const Sidebar = ({ items, language }) => {
   };
 
   return (
-    <div className="fixed top-12 left-0 overflow-y-scroll overflow-x-hidden scrollbar-thin scrollbar-thumb-thumb scrollbar-track-track max-h-[calc(100vh-3rem)]">
-      <ul>
+    <div className="fixed top-12 left-0 overflow-y-scroll overflow-x-hidden max-h-[calc(100vh-3rem)]">
+      <ul className="scrollbar-thin scrollbar-thumb-orange scrollbar-track-orange-400">
         {items.map((item, index) => (
           <li key={index}>
             <Link href={`/Learner/${language}/${item.replace(/\s+/g, '-')}`}>
@@ -24,9 +24,9 @@ const Sidebar = ({ items, language }) => {
                   onClick={() => handleClick(index)}
                   className={`${
                     activeItem === index
-                      ? 'bg-orange-500'
-                      : 'bg-orange-400 hover:bg-orange-500'
-                  } text-white font-bold py-2 px-3 my-1 w-full flex justify-between items-center transition duration-300 ease-in-out cursor-pointer relative z-10`}
+                      ? 'bg-orange-500 '
+                      : 'bg-black text-white hover:bg-orange-500  '
+                  }  py-2 px-3 border w-full flex justify-between items-center transition duration-300 ease-in-out cursor-pointer relative z-10`}
                 >
                   <span>{item}</span>
                   {completedItems.includes(index) ? (

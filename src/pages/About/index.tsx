@@ -1,4 +1,4 @@
-mport React from "react";
+import React from "react";
 import Topbar from "@/components/Topbar/Topbar";
 import Lottie from "lottie-react";
 import aboutGif from "../../../public/aboutPageGIF.json";

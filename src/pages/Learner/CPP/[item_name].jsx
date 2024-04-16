@@ -1,7 +1,9 @@
 import { useRouter } from 'next/router';
-import Sidebar from '../../../components/TextContent/Sidebar/Sidebar';
-import Header from '../../../components/TextContent/Header/Header';
-import Body from '../../../components/TextContent/Body/Body';
+import React, { useMemo, lazy, Suspense } from 'react';
+import Topbar from '../../../components/Topbar/Topbar';
+const Sidebar = lazy(() => import('../../../components/TextContent/Sidebar/Sidebar'));
+const Header = lazy(() => import('../../../components/TextContent/Header/Header'));
+const Body = lazy(() => import('../../../components/TextContent/Body/Body'));
 
 
 const ItemPage = () => {
@@ -10,28 +12,23 @@ const ItemPage = () => {
   const { item_name} = router.query;
     console.log(item_name, "this is item");
     const item = item_name ? item_name.replace(/_/g, '-').replace(/\+/g, '-') : null
-  return (
-    <div>
-       <div className="flex">
-                <div className="flex-initial w-1/8">
-                       
-                         <Sidebar items={topics} language={"CPP"}/>
-                </div>
-                <div className="fixed top-0 left-60 flex-col  ">
-                    <div className="flex-initial w-1/8">
-                         <Header/>
-                    </div>
-                    <div className="flex-initial w-7/8"> 
-                         <Body/>
-                    </div>
-                    <h1>{item_name}</h1>
-                </div>
-                
-            </div>
-     
-      
-    </div>
-  );
-};
-
-export default ItemPage;
+    return (
+      <div className='flex-col'>
+        <div className="fixed w-screen"><Topbar/></div>
+        <div className="flex">
+          <Suspense fallback={<div>Loading...</div>}>
+            <Sidebar items={topics} language={"CPP"} />
+          </Suspense>
+          <div className="fixed top-0 left-60 flex-col">
+            <Suspense fallback={<div>Loading...</div>}>
+              <div className=""><Header /></div>
+              <div className=""><Body /></div>
+            </Suspense>
+            <h1>{item}</h1>
+          </div>
+        </div>
+      </div>
+    );
+  };
+  
+  export default ItemPage;

@@ -73,7 +73,7 @@ const AboutPage = () => {
         <FeatureBox image="f5.png" title="Happy Students" />
         <FeatureBox image="f6.png" title="24/7 Support" />
       </section>
-      <section id="newsletter" className="section-p1 text-white py-16 bg-gray-900 ">
+      <section id="newsletter" className="section-p1 text-white py-16 bg-black ">
         <div className="newstext text-center mb-4">
           <h4 className="text-2xl font-bold mb-2">Sign Up For Newsletter</h4>
           <p>
@@ -92,7 +92,7 @@ const AboutPage = () => {
           </button>
         </div>
       </section>
-      {/* <Footer/> */}
+       <Footer/> 
     </div>
   );
 };

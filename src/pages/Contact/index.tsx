@@ -1,17 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Topbar from "@/components/Topbar/Topbar";
 import Footer from "@/components/Footer/Footer";
+import Lottie from 'lottie-react';
+import contactGif from "../../../public/Contact.json";
 
 const ContactPage = () => {
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        subject: "",
+        message: ""
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prevState => ({
+            ...prevState,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Add your form submission logic here
+        console.log(formData);
+    };
+
     return (
-        <div>
+        <div className='bg-black text-white'>
             <Topbar />
             <section id="page-header" className="about-header px-8 py-16 bg-gray-200 text-center bg-cover bg-center" style={{ backgroundImage: "url('b2.jpg')" }}>
-    <div className="text-white">
-        <h2 className="text-4xl font-bold">#Let's_Talk</h2>
-        <p className="text-lg">LEAVE A MESSAGE. We Love To Hear From You!</p>
-    </div>
-</section>
+                <div className="text-white">
+                    <h2 className="text-4xl font-bold">#Let's_Talk</h2>
+                    <p className="text-lg">LEAVE A MESSAGE. We Love To Hear From You!</p>
+                </div>
+            </section>
 
             <section id="contact-details" className="section-p1 flex justify-between items-center px-8 py-16">
                 <div className="details w-full lg:w-1/2">
@@ -35,36 +58,36 @@ const ContactPage = () => {
                 </div>
             </section>
             <section id="form-details" className="section-p1 flex flex-col lg:flex-row justify-between items-start px-8 py-16">
-                <form className="w-full lg:w-2/3 mb-8 lg:mb-0 lg:pr-8">
+                <form onSubmit={handleSubmit} className="w-full lg:w-2/3 mb-8 lg:mb-0 lg:pr-8">
                     <span className="text-lg">LEAVE A MESSAGE</span>
                     <h2 className="text-3xl font-bold mb-4">We Love To Hear From You</h2>
-                    <input type="text" placeholder="Your Name" className="w-full py-2 px-3 border border-gray-300 rounded mb-4" />
-                    <input type="text" placeholder="E-MAIL" className="w-full py-2 px-3 border border-gray-300 rounded mb-4" />
-                    <input type="text" placeholder="SUBJECT" className="w-full py-2 px-3 border border-gray-300 rounded mb-4" />
-                    <textarea id="" name="" rows="5" placeholder="Your message" className="w-full py-2 px-3 border border-gray-300 rounded mb-4"></textarea>
-                    <button className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition duration-300">SUBMIT</button>
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your Name" className="w-full py-2 px-3 border border-gray-300 rounded mb-4" required />
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="E-MAIL" className="w-full py-2 px-3 border border-gray-300 rounded mb-4" required />
+                    <input type="text" name="subject" value={formData.subject} onChange={handleChange} placeholder="SUBJECT" className="w-full py-2 px-3 border border-gray-300 rounded mb-4" required />
+                    <textarea name="message" value={formData.message} onChange={handleChange} rows="5" placeholder="Your message" className="w-full py-2 px-3 border border-gray-300 rounded mb-4" required></textarea>
+                    <button type="submit" className="bg-orange-500 text-white py-2 px-4 rounded hover:bg-green-600 transition duration-300">SUBMIT</button>
                 </form>
                 <div className="people w-full lg:w-1/3 flex flex-col items-center justify-center mt-100 lg:mt-0">
-                  
+                    <Lottie animationData={contactGif} className="w-full h-auto max-w-md ml-20 rounded-lg shadow-lg" />
                 </div>
             </section>
-            <section id="newsletter" className="section-p1 bg-gray-100 py-16">
-                <div className="newstext text-center mb-4">
-                    <h4 className="text-2xl font-bold mb-2">Sign Up For Newsletter</h4>
-                    <p>
-                        Get E-mail Updates About Our Latest Shop And{" "}
-                        <span className="font-bold">Special Offers.</span>
-                    </p>
-                </div>
-                <div className="form flex justify-center items-center mt-4">
-                    <input
-                        type="email"
-                        placeholder="Your e-mail address"
-                        className="py-2 px-4 border border-gray-400 rounded mr-2"
-                    />
-                    <button className="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600">
-                        Sign Up
-                    </button>
+            <section id="newsletter" className="section-p1  py-16 bg-black text-white ">
+                <div className="container flex flex-col items-center justify-center">
+                    <div className="newstext text-center mb-4">
+                        <h4 className="text-2xl font-bold mb-2">Sign Up For Newsletter</h4>
+                        <p>
+                            Get E-mail Updates About Our Latest Shop And{" "}
+                            <span className="font-bold">Special Offers.</span>
+                        </p>
+                    </div>
+                    <div className="form flex justify-center items-center mt-4">
+                        <input
+                            type="email"
+                            placeholder="Your e-mail address"
+                            className="py-2 px-4 border border-gray-400 rounded mr-2 focus:outline-none focus:border-blue-500"
+                        />
+                        <button className="py-2 px-4 bg-orange-500 text-white rounded hover:bg-blue-600 transition duration-300 focus:outline-none">Sign Up</button>
+                    </div>
                 </div>
             </section>
             <Footer />

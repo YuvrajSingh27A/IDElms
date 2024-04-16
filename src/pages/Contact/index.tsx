@@ -61,10 +61,10 @@ const ContactPage = () => {
                 <form onSubmit={handleSubmit} className="w-full lg:w-2/3 mb-8 lg:mb-0 lg:pr-8">
                     <span className="text-lg">LEAVE A MESSAGE</span>
                     <h2 className="text-3xl font-bold mb-4">We Love To Hear From You</h2>
-                    <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your Name" className="w-full py-2 px-3 border border-gray-300 rounded mb-4" required />
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="E-MAIL" className="w-full py-2 px-3 border border-gray-300 rounded mb-4" required />
-                    <input type="text" name="subject" value={formData.subject} onChange={handleChange} placeholder="SUBJECT" className="w-full py-2 px-3 border border-gray-300 rounded mb-4" required />
-                    <textarea name="message" value={formData.message} onChange={handleChange} rows="5" placeholder="Your message" className="w-full py-2 px-3 border border-gray-300 rounded mb-4" required></textarea>
+                    <input type="text" name="name" value={formData.name} onChange={handleChange} placeholder="Your Name" className="w-full py-2 px-3 border border-gray-300 text-black rounded mb-4" required />
+                    <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="E-MAIL" className="w-full py-2 px-3 border border-gray-300 text-black rounded mb-4" required />
+                    <input type="text" name="subject" value={formData.subject} onChange={handleChange} placeholder="SUBJECT" className="w-full py-2 px-3 border border-gray-300  text-black rounded mb-4" required />
+                    <textarea name="message" value={formData.message} onChange={handleChange} rows="5" placeholder="Your message" className="w-full py-2 px-3 border border-gray-300 text-black rounded mb-4" required></textarea>
                     <button type="submit" className="bg-orange-500 text-white py-2 px-4 rounded hover:bg-green-600 transition duration-300">SUBMIT</button>
                 </form>
                 <div className="people w-full lg:w-1/3 flex flex-col items-center justify-center mt-100 lg:mt-0">
@@ -84,7 +84,7 @@ const ContactPage = () => {
                         <input
                             type="email"
                             placeholder="Your e-mail address"
-                            className="py-2 px-4 border border-gray-400 rounded mr-2 focus:outline-none focus:border-blue-500"
+                            className="py-2 px-4 border border-gray-400 text-black rounded mr-2 focus:outline-none focus:border-blue-500"
                         />
                         <button className="py-2 px-4 bg-orange-500 text-white rounded hover:bg-blue-600 transition duration-300 focus:outline-none">Sign Up</button>
                     </div>

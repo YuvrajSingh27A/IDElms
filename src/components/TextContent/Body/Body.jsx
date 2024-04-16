@@ -1,8 +1,10 @@
 import React from 'react'
 
-const Body = () => {
+const Body = ({content}) => {
   return (
-    <div>body</div>
+    <div className='whitespace-pre-line'>
+     {content}
+    </div>
   )
 }
 

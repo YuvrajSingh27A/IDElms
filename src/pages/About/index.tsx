@@ -106,4 +106,4 @@ const FeatureBox = ({ image, title }) => {
   );
 };
 
-export default AboutPage; 
+export default AboutPage;

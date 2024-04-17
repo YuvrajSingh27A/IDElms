@@ -57,7 +57,7 @@ const Home: NextPage= () => {
          
        
           {/* Trainer Card */}
-          <div className="bg-white rounded-lg ml-56 shadow-md p-4 relative aspect-w-1 aspect-h-1 transform rotate-0 transition-transform duration-500 hover:rotate-360 hover:scale-105 backdrop-filter backdrop-blur-lg bg-opacity-20 w-11/12 hover:shadow-orange">
+          <div className="bg-white rounded-lg ml-48 shadow-md p-4 relative aspect-w-1 aspect-h-1 transform rotate-0 transition-transform duration-500 hover:rotate-360 hover:scale-105 backdrop-filter backdrop-blur-lg bg-opacity-20 w-11/12 hover:shadow-orange">
             <h2 className="text-lg font-semibold mb-2 text-white">Trainer</h2>
             <p className="text-sm text-white mb-4">Short description about the trainer card goes here.</p>
             <button className="bg-orange-500 text-white font-semibold px-4 py-2 rounded-lg transition-all duration-300 hover:bg-gradient-to-r from-black to-orange-500">

@@ -11,10 +11,9 @@ const Logout: React.FC = () => {
 	const router = useRouter();
 	const [signOut, loading, error] = useSignOut(auth);
 	const setAuthModalState = useSetRecoilState(authModalState);
-    const type = useRecoilValue(authModalState).type;
-	const isOpen = useRecoilValue(authModalState).isOpen
-	console.log(type)
-	console.log(isOpen);
+    //const type = useRecoilValue(authModalState).type;
+	//const isOpen = useRecoilValue(authModalState).isOpen
+	
 
 	
 	const handleLogoutClick = () => {

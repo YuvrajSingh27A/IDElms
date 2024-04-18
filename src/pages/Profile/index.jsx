@@ -3,18 +3,73 @@ import Image from "next/image";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "@/firebase/firebase";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
-import styles from "@/styles/hacker.module.css"; // Ensure this path is correct for your project structure
-import yoyo from "../Profile/p.jpg"; // Ensure this path is correct for your project structure
+import styles from "@/styles/hacker.module.css";
+import yoyo from "../Profile/p.jpg";
+import Topbar from "@/components/Topbar/Topbar";
+import Footer from "@/components/Footer/Footer";
 
-const ProfileHeader = ({ userData }) => (
-  <div className="flex items-center mb-20">
-    <Image src={yoyo} alt="Avatar" className="w-12 h-12 rounded-full object-cover mr-5" />
-    <h1 className="text-2xl" style={{ color: '#f97718' }}>{userData && userData.username}</h1>
+// Streak Calendar Component
+const StreakCalendar = ({ streak }) => {
+  const [markedDates, setMarkedDates] = useState([]);
+  const currentDate = new Date();
+  const currentMonth = currentDate.getMonth();
+  const currentYear = currentDate.getFullYear();
+  const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+  // Function to mark the current date
+  const markCurrentDate = () => {
+    const today = new Date();
+    const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
+    setMarkedDates([formattedDate]);
+  };
+
+  useEffect(() => {
+    markCurrentDate();
+  }, []);
+
+  return (
+    <>
+      
+      <div className={`${styles.streakCalendar} absolute top-0 right-0 mr-48 mt-32 bg-black text-white p-4 rounded-lg shadow-lg z-10`}>
+        <div className="flex justify-between mb-2">
+          <span>Streak:</span>
+          <span>{streak}</span>
+        </div>
+        <div className="grid grid-cols-7 gap-1">
+          <span className="text-gray-400">S</span>
+          <span className="text-gray-400">M</span>
+          <span className="text-gray-400">T</span>
+          <span className="text-gray-400">W</span>
+          <span className="text-gray-400">T</span>
+          <span className="text-gray-400">F</span>
+          <span className="text-gray-400">S</span>
+          {Array.from({ length: daysInMonth }, (_, i) => {
+            const day = i + 1;
+            const isMarked = markedDates.includes(`${currentYear}-${(currentMonth + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`);
+            return (
+              <span key={day} className={`text-center relative ${isMarked ? 'bg-green-500' : ''}`}>
+                {day}
+              </span>
+            );
+          })}
+        </div>
+      </div>
+    </>
+  );
+};
+
+// Profile Header Component
+const ProfileHeader = ({ userData, streak }) => (
+  <div className="relative">
+    <StreakCalendar streak={streak} />
+    <div className="flex items-center mb-20">
+      <Image src={yoyo} alt="Avatar" className="w-12 h-12 rounded-full object-cover mr-5" />
+      <h1 className="text-2xl" style={{ color: '#f97718' }}>{userData && userData.username}</h1>
+    </div>
   </div>
 );
 
-
-
+// ActivityFeed Component
 const ActivityFeed = ({ activities }) => (
   <div className={`${styles.activityFeed} ${styles.glassEffect} bg-gray-800 text-white p-8 rounded-2xl shadow mb-20 w-auto`} style={{ borderColor: '#f97718' }}>
     <h2 className="text-xl font-semibold mb-5" style={{ color: '#f97718' }}>My Badges</h2>
@@ -26,6 +81,7 @@ const ActivityFeed = ({ activities }) => (
   </div>
 );
 
+// Certificate Component
 const Certificate = ({ certification }) => (
   <div className={`${styles.activityFeed} ${styles.glassEffect} bg-gray-800 text-white p-8 rounded-2xl shadow mb-20 w-auto`} style={{ borderColor: '#f97718' }}>
     <h2 className="text-xl font-semibold mb-5" style={{ color: '#f97718' }}>Certificate Details</h2>
@@ -37,6 +93,7 @@ const Certificate = ({ certification }) => (
   </div>
 );
 
+// Activity Component
 const Activity = ({ contact }) => (
   <div className={`${styles.activityFeed} ${styles.glassEffect} bg-gray-800 text-white p-8 rounded-2xl shadow mb-20 w-auto`} style={{ borderColor: '#f97718' }}>
     <h2 className="text-xl font-semibold mb-5" style={{ color: '#f97718' }}>Contact Details</h2>
@@ -48,6 +105,7 @@ const Activity = ({ contact }) => (
   </div>
 );
 
+// SolvedProblem Component
 const SolvedProblem = ({ problems }) => (
   <div className={`${styles.activityFeed} ${styles.glassEffect} bg-gray-800 text-white p-8 rounded-2xl shadow mb-20 w-auto`} style={{ borderColor: '#f97718' }}>
     <h2 className="text-xl font-semibold mb-5" style={{ color: '#f97718' }}>Solved Problem</h2>
@@ -63,9 +121,14 @@ const ProfilePage = () => {
   const [userData, setUserData] = useState({
     username: "",
     email: "",
-    
   });
-  const [data,setData] = useState({
+  const [streak, setStreak] = useState(0);
+
+  const updateStreak = () => {
+    setStreak((prevStreak) => prevStreak + 1);
+  };
+
+  const [data, setData] = useState({
     bio: "web developer",
     followers: 100,
     following: 50,
@@ -73,7 +136,8 @@ const ProfilePage = () => {
     contact: ["add Your Mail", "+91 7018318078", "india"],
     certification: ["You Have Not Any Certificates yet, Get Certified"],
     solvedProblems: ["Problem A", "Problem B", "Problem C"],
-  })
+  });
+
   const ProfileInfo = ({ userData }) => (
     <div className="mb-20">
       <div className="mb-5">
@@ -98,19 +162,19 @@ const ProfilePage = () => {
       </div>
     </div>
   );
+
   const [user] = useAuthState(auth);
 
   useEffect(() => {
     const fetchUserData = async () => {
       if (user) {
         try {
-          // Fetch user data from Firestore
           const db = getFirestore();
           const allUsersRef = doc(db, "allUsers", user.uid);
-          const userDoc = await getDoc(allUsersRef); 
+          const userDoc = await getDoc(allUsersRef);
           if (userDoc.exists()) {
-            // If user data exists, set it in state
             setUserData(userDoc.data());
+            updateStreak();
           } else {
             console.log("User data not found");
           }
@@ -124,25 +188,24 @@ const ProfilePage = () => {
   }, [user]);
 
   return (
-    <div className={`${styles.bigContainer} ${styles.customBackground}`}>
-      <div className={`${styles.profilePage} ${styles.textOnCustomBg}`}>
-        <ProfileHeader userData={userData} />
-        
-        <ProfileInfo
-          userData={userData}
-        />
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          <ActivityFeed activities={data.activities} />
-          <Certificate certification={data.certification} />
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          <Activity contact={data.contact} />
-          <SolvedProblem problems={data.solvedProblems} />
+    <>
+      <Topbar />
+      <div className={`${styles.bigContainer} ${styles.customBackground}`}>
+        <div className={`${styles.profilePage} ${styles.textOnCustomBg}`}>
+          <ProfileHeader userData={userData} streak={streak} />
+          <ProfileInfo userData={userData} />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <ActivityFeed activities={data.activities} />
+            <Certificate certification={data.certification} />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+            <Activity contact={data.contact} />
+            <SolvedProblem problems={data.solvedProblems} />
+          </div>
         </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

@@ -41,8 +41,8 @@ const Footer = () => {
                     <div className="install">
                         <h4 className="text-lg font-bold">Install App</h4>
                         <p className="mb-2">From App Store Or Google Play</p>
-                        <div className="row mb-4">
-                            <img src="play.jpg" alt="Google Play"/>
+                        <div className="row mb-4 ">
+                            <img src="play.jpg" className='rounded-2xl' alt="Google Play"/>
                         </div>
                         <p className="mb-2">Secured Payment Gateways</p>
                         <img src="pay.png" alt="Payment Gateways"/>

@@ -17,6 +17,7 @@
 		"@uiw/codemirror-theme-vscode": "^4.21.25",
 		"@uiw/react-codemirror": "^4.21.25",
 		"assert": "^2.1.0",
+		"chart.js": "^3.7.0",
 		"dotenv": "^16.4.5",
 		"eslint": "8.36.0",
 		"eslint-config-next": "13.2.4",

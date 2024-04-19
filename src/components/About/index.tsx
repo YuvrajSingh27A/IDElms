@@ -4,10 +4,11 @@ import Lottie from "lottie-react";
 import aboutGif from "../../../public/aboutPageGIF.json";
 import Footer from "@/components/Footer/Footer";
 
+
 const AboutPage = () => {
   return (
     <div className="bg-black">
-      <Topbar />
+      
      
       <section id="about-head" className="section-p1 flex items-center text-white bg-black mt-16">
        
@@ -92,7 +93,7 @@ const AboutPage = () => {
           </button>
         </div>
       </section>
-       <Footer/> 
+     
     </div>
   );
 };

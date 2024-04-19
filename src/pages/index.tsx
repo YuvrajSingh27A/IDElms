@@ -11,6 +11,8 @@ import { useRouter } from 'next/router';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '@/firebase/firebase';
 import Footer from '@/components/Footer/Footer';
+import About from '../components/About'
+
 
 const Home: NextPage= () => {
   const setAuthModalState = useSetRecoilState(authModalState);
@@ -73,6 +75,7 @@ const Home: NextPage= () => {
           </div>
         </div>
       </div>
+      <About/>
       <Footer/>
     </>
   );

@@ -5,7 +5,7 @@ import Playground from "./Playground/Playground";
 import { Problem } from "@/utils/types/problem";
 import Confetti from "react-confetti";
 import useWindowSize from "@/hooks/useWindowSize";
-
+// workspace
 type WorkspaceProps = {
 	problem: Problem;
 };

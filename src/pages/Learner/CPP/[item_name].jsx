@@ -220,7 +220,10 @@ operating systems.
               <b>Important Points:</b>
              
               <CppTopicsContent  content = {<MarkDownRenderer  markDown_text={cppSyntax?.syntax[0]?.Imp_points}/>}/>
-             
+              <br/>
+              <br/>
+              <h2 className='font-semibold'>Exclude Namespace</h2>
+              <br/>
             </div>
             </>}
           </div>

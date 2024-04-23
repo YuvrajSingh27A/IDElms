@@ -3,6 +3,9 @@ import React, { useMemo, lazy, Suspense, useEffect } from 'react';
 import Topbar from '../../../components/Topbar/Topbar';
 import CppTopicsContent from '../../../components/TextContent/CppTopicsContent/CppTopicsContent';
 import Image from 'next/image';
+import { cppSyntax } from '../../../utils/Constants/CPP/syntax';
+import CodeHighlighter from '../../../components/CodeHighlighter/CodeHighlighter';
+import MarkDownRenderer from '../../../components/MarkDownRenderer/MarkDownRenderer';
 
 const Sidebar = lazy(() => import('../../../components/TextContent/Sidebar/Sidebar'));
 const Header = lazy(() => import('../../../components/TextContent/Header/Header'));
@@ -10,6 +13,7 @@ const Body = lazy(() => import('../../../components/TextContent/Body/Body'));
 
 
 const ItemPage = () => {
+ 
   const topics =[" Home", " Intro", " Get Started", " Syntax", "Output", "Comments", " Variables", "Data Types", "Constants", " Operators", "Strings", " Math", "Booleans"," Conditions", " If..Else", " Switch", " While Loop", " For Loop", " Break/Continue", " Arrays", " User Input", " Pointers", " Functions", " Function Parameters", " Function Declaration"," Function Overloading", " Function Overriding", " Recursion", " OOP"," Classes/Objects", " Class Methods", " Constructors"," Access Specifiers"," Encapsulation"," Inheritance"," Polymorphism"," Files"," Exceptions"]
   const router = useRouter();
   const { item_name} = router.query;
@@ -144,6 +148,7 @@ operating systems.
                             <strong>Note:</strong> Web-based IDE's can work as well, but functionality is limited
                              execution is essential.
                             <br/> 
+                            <br/>
                           </>
                       )}/>
               </div> 
@@ -151,6 +156,76 @@ operating systems.
               
            </>
            }
+           {item?.includes("Syntax") && 
+            <>
+            <Header title="C++ Syntax" subtitle="" />
+            <div className='text-xl mt-4 '>
+              <CppTopicsContent  content={cppSyntax?.syntax[0]?.text}/>
+              
+              <CppTopicsContent content={<CodeHighlighter className="overflow-auto" language="cpp" code={cppSyntax?.syntax[0]?.Example}/>}/>
+              
+              <h3>Example Explained</h3>
+              <br/>
+              <p>Let us now understand every line and the terminologies of the above program.</p>
+              <br/>
+              
+              <b>1. // C++ program to display “Hello World”</b>
+              <br/>
+              <br/>
+              <CppTopicsContent content = {cppSyntax?.syntax[0]?.problem}/>
+              <br/>
+              <br/>
+              <b>2. #include</b>
+              <br/>
+              <br/>
+              <CppTopicsContent content = {cppSyntax?.syntax[0]?.include}/>
+              <br/>
+              <br/>
+              <b>3. using namespace std</b>
+              <br/>
+              <br/>
+              <CppTopicsContent content = {cppSyntax?.syntax[0]?.using_namespace_std}/>
+              <br/>
+              <br/>
+              <b>4. A blank line or white space</b>
+              <br/>
+              <br/>
+              <CppTopicsContent content = {cppSyntax?.syntax[0]?.A_blank_line_or_white_space}/>
+              <br/>
+              <br/>
+              <b>5. int main() { }</b>
+              <br/>
+              <br/>
+              <CppTopicsContent content = {cppSyntax?.syntax[0]?.int_main}/>
+              <br/>
+              <br/>
+              <b>6. cout “Hello World”;</b>
+              <br/>
+              <br/>
+              <CppTopicsContent content = {cppSyntax?.syntax[0]?.cOut}/>
+              <br/>
+              <br/>
+              <CppTopicsContent content={<CodeHighlighter className="overflow-auto" language="cpp" code={cppSyntax?.syntax[0]?.Note_1}/>}/>
+              <br/>
+              <br/>
+              <b>6. return 0</b>
+              <br/>
+              <br/>
+              <CppTopicsContent content = {cppSyntax?.syntax[0]?.return}/>
+              <br/>
+              <br/>
+              <CppTopicsContent content={<CodeHighlighter className="overflow-auto" language="cpp" code={cppSyntax?.syntax[0]?.Note_2}/>}/>
+              <br/>
+              <br/>
+              <b>Important Points:</b>
+             
+              <CppTopicsContent  content = {<MarkDownRenderer  markDown_text={cppSyntax?.syntax[0]?.Imp_points}/>}/>
+              <br/>
+              <br/>
+              <h2 className='font-semibold'>Exclude Namespace</h2>
+              <br/>
+            </div>
+            </>}
           </div>
           </div>
         </div>

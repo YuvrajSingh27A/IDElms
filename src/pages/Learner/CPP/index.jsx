@@ -3,6 +3,7 @@ import Sidebar from "../../../components/TextContent/Sidebar/Sidebar";
 import Header from "../../../components/TextContent/Header/Header";
 import Body from "../../../components/TextContent/Body/Body";
 import Topbar from "../../../components/Topbar/Topbar";
+import TryItYourself from "../../../components/Buttons/TryItYourself";
 
 //const boldWord = <b>hello</b>
 
@@ -22,11 +23,11 @@ const CPage = () => {
   return (
     <div className="flex flex-col h-screen">
       <Topbar />
-      <div className="flex flex-1 overflow-auto">
+      <div className="flex flex-1 overflow-auto bg-slate-300">
         <Sidebar items={topics} language={"CPP"} />
         <div className="flex flex-col ml-60 p-14">
           <Header title="C++ Tutorial:" subtitle="Learn C++" />
-          <div className="text-xl mt-4">
+          <div className="text-xl mt-4 bg-slate-400 p-4">
           <Body content={(
       <>
         <strong>C++</strong> is a popular programming language.
@@ -43,6 +44,7 @@ const CPage = () => {
         <br/> 
         <strong>Example</strong>
         <br/>
+        <div className="m-4">
         #include &lt;iostream&gt;
         <br/> 
         using namespace std;
@@ -54,13 +56,20 @@ const CPage = () => {
           <span style={{color:"blue"}}>return</span> <span style={{color:"red"}}>0</span>;
           <br/> 
         &#125;
+        </div>
+        <TryItYourself/>
+       
       </>
+      
     )} />
 
-
           </div>
+          
+<br/>
+       <br/>
         </div>
       </div>
+      
     </div>
   );
 };

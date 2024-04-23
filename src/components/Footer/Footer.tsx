@@ -7,8 +7,8 @@ const Footer = () => {
                 <div className="col w-full lg:w-auto">
                     <div className="contact mb-6 lg:mb-0">
                         <h4 className="text-lg font-bold">Contact</h4>
-                        <p className="mb-2"><strong>ADDRESS:</strong> Ward No. 6, Gurudwara Road, Palampur</p>
-                        <p className="mb-2"><strong>PHONE:</strong> +91 7018318078, 9418542322</p>
+                        <p className="mb-2"><strong>ADDRESS:</strong> Mohali .Sector 75 ,</p>
+                        <p className="mb-2"><strong>PHONE:</strong> +91 6544895661</p>
                         <p><strong>TIMING:</strong> 10:00 - 18:00, Mon-Sat</p>
                         <div className="follow mt-6">
                             <h4 className="text-lg font-bold">Follow Us</h4>

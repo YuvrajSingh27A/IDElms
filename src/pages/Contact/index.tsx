@@ -31,7 +31,7 @@ const ContactPage = () => {
             <Topbar />
             <section id="page-header" className="about-header px-8 py-16 bg-gray-200 text-center bg-cover bg-center" style={{ backgroundImage: "url('b2.jpg')" }}>
                 <div className="text-white">
-                    <h2 className="text-4xl font-bold">#Let's_Talk</h2>
+                    <h2 className="text-4xl font-bold">#Lets_Talk</h2>
                     <p className="text-lg">LEAVE A MESSAGE. We Love To Hear From You!</p>
                 </div>
             </section>

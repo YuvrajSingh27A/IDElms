@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { getAuth, signInWithPhoneNumber, ConfirmationResult, RecaptchaVerifier, sendEmailVerification } from "firebase/auth";
+import { getAuth, sendEmailVerification, signInWithPhoneNumber, ConfirmationResult, RecaptchaVerifier } from "firebase/auth";
 import { toast } from "react-toastify";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import { useRouter } from "next/router";
@@ -17,13 +17,16 @@ const AuthComponent = () => {
     // State for confirmation result (used for phone verification)
     const [confirmationResult, setConfirmationResult] = useState<ConfirmationResult | null>(null);
 
+    // Create user with email and password hook
+    const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(firebaseAuth);
+
     // Handle input changes 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setInputs((prev) => ({ ...prev, [name]: value }));
     };
 
-    // Handle registering the use
+    // Handle registering the user
     const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
@@ -43,8 +46,15 @@ const AuthComponent = () => {
         }
 
         try {
-            const [createUserWithEmailAndPassword] = useCreateUserWithEmailAndPassword(firebaseAuth);
             const newUserCredential = await createUserWithEmailAndPassword(inputs.email, inputs.password);
+            
+            // Check if newUserCredential is undefined
+            if (!newUserCredential) {
+                // Handle the case where newUserCredential is undefined
+                toast.error("User registration failed", { position: "top-center" });
+                return;
+            }
+            
             const user = newUserCredential.user;
 
             // Send email verification
@@ -83,7 +93,7 @@ const AuthComponent = () => {
             // Set up reCAPTCHA
             const appVerifier = new RecaptchaVerifier("recaptcha-container", {
                 size: "normal",
-                callback: (response:boolean) => {
+                callback: (response: boolean) => {
                     // reCAPTCHA solved, allow signInWithPhoneNumber
                 },
                 "expired-callback": () => {
@@ -95,7 +105,6 @@ const AuthComponent = () => {
             const result = await signInWithPhoneNumber(firebaseAuth, inputs.phoneNumber, appVerifier);
             setConfirmationResult(result);
             toast.success("SMS sent! Please enter the verification code.", { position: "top-center" });
-
         } catch (error: any) {
             toast.error(`Error sending SMS: ${error.message}`, { position: "top-center" });
         }
@@ -119,7 +128,7 @@ const AuthComponent = () => {
         }
     };
 
-    // Function to handle sending SMS
+    // Handle sending SMS
     const handleSendSms = async () => {
         if (!inputs.phoneNumber) {
             toast.error("Please enter a phone number to send an SMS", { position: "top-center" });
@@ -136,15 +145,12 @@ const AuthComponent = () => {
                 "expired-callback": () => {
                     toast.error("reCAPTCHA expired. Please try again.", { position: "top-center" });
                 },
-
             }, firebaseAuth);
 
             // Send SMS with verification code
             const result = await signInWithPhoneNumber(firebaseAuth, inputs.phoneNumber, appVerifier);
             setConfirmationResult(result);
             toast.success("SMS sent! Please enter the verification code.", { position: "top-center" });
-  // Show welcome message to the user
-        toast.success("Welcome to CodeStop! Unlock your coding potential with CodeStop: Where challenges become opportunities.", { position: "top-center" });
         } catch (error: any) {
             toast.error(`Error sending SMS: ${error.message}`, { position: "top-center" });
         }

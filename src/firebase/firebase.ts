@@ -4,12 +4,13 @@ import { getFirestore } from "firebase/firestore";
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyATa1I0XbQ_CQV5G8S5MLxKoKTUpyK8UbM",
-  authDomain: "hm-projects-be4d6.firebaseapp.com",
-  projectId: "hm-projects-be4d6",
-  storageBucket: "hm-projects-be4d6.appspot.com",
-  messagingSenderId: "560024993874",
-  appId: "1:560024993874:web:3cb029d03363a338849f8b"
+  apiKey: "AIzaSyCr6IAKM6A3ib25mKEDP-JUW6tMVzKY3ik",
+  authDomain: "hmproject-4a240.firebaseapp.com",
+  projectId: "hmproject-4a240",
+  storageBucket: "hmproject-4a240.appspot.com",
+  messagingSenderId: "874293283765",
+  appId: "1:874293283765:web:f24c6d0d5ea732c377e7fc",
+  measurementId: "G-0RD7JPDQ6S"
 };
 
 // Check if Firebse app is already initialized

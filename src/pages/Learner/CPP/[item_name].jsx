@@ -224,7 +224,12 @@ operating systems.
               <br/>
               <h2 className='font-semibold'>Exclude Namespace</h2>
               <br/>
+              <CppTopicsContent content ={<MarkDownRenderer markDown_text={cppSyntax?.syntax[0]?.Exclude_Namespace}/>}/>
+              <br/>
+              <CppTopicsContent content ={<MarkDownRenderer markDown_text={cppSyntax?.syntax[0]?.Exclude_Namespace}/>}/>
             </div>
+            <h2  className='font-semibold'>Example</h2>
+            <CppTopicsContent content={<MarkDownRenderer markDown_text={cppSyntax?.syntax[0]?.Example_without_namespace}/>}/>
             </>}
           </div>
           </div>

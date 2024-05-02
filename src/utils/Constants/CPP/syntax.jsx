@@ -51,7 +51,20 @@ export const cppSyntax = {
 
 3.It is a good practice to use blank line and comments in programs fo easy understanding and make the code more readable.
 
-4.cout is used to print statements and cin is used to take inputs.`
+4.cout is used to print statements and cin is used to take inputs.`,
+
+
+            "Exclude_Namespace" : `You might see some C++ programs that runs without the standard 
+            namespace library. The using namespace std line can be exclude and 
+            replaced with the std keyword, followed by the :: operator for some objects:`,
+
+            "Example_without_namespace" : `#include <iostream>
+            int main() {
+             std::cout << "Hello World!";
+             return 0;
+            }`,
+
+            "Note_3" : `Note: It is up to you if you want to include the standard namespace library or not.`,
 
 
 

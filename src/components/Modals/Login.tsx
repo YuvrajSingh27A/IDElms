@@ -57,6 +57,7 @@ const Login: React.FC<LoginProps> = () => {
 				<label htmlFor='password' className='text-sm font-medium block mb-2 text-gray-300'>
 					Your Password
 				</label>
+				{/* PASSWORD */}
 				<input
 					onChange={handleInputChange}
 					type='password'

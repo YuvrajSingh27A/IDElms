@@ -41,7 +41,7 @@ const ProblemDescription: React.FC<ProblemDescriptionProps> = ({ problem, _solve
 
 			if (userDoc.exists() && problemDoc.exists()) {
 				if (liked) {
-					// remove problem id from likedProblems on user document, decrement likes on problem document
+					// remove prblem id from likedProblems on user document, decrement likes on problem document
 					transaction.update(userRef, {
 						likedProblems: userDoc.data().likedProblems.filter((id: string) => id !== problem.id),
 					});
